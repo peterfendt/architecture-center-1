@@ -42,21 +42,21 @@ last_update:
 
 SAP Business Warehouse (BW) has been a cornerstone of enterprise data management for decades, providing essential insights for decision-making. However, the growing complexity of modern data landscapes, the need for real-time analytics, and the shift toward AI-driven processes demand a more scalable and integrated approach. SAP Business Data Cloud (SAP BDC) offers a path to modernize BW environments, enabling organizations to leverage existing investments while transitioning to a future-ready architecture.
 
-With the introduction of SAP BW NetWeaver Cloud, private edition, SAP offers customers an option to lift their SAP BW NetWeaver to an SAP managed environment without the need to migrate to an intermediate solution until 2040 and benefit from an extended end of maintenance until 2030 for SAP BW NetWeaver Cloud, private edition.
+With the introduction of SAP BW, Private Cloud Edition, SAP offers customers an option to lift their SAP BW to an SAP managed environment without the need to migrate to an intermediate solution until 2040 for SAP BW/4HANA (Private Cloud Edition) and benefit from an extended end of maintenance until 2030 for SAP BW 7.5 on HANA Private Cloud Edition.
 
-As a result, customers can gradually shift SAP BW use cases to SAP Datasphere and replace respective data flows with proven capabilities within SAP Datasphere as well as data products and Intelligent Applications within SAP Business Data Cloud, instead of spending time and budget on a migration.
+As a result, customers can gradually shift SAP BW use cases to SAP BDC by replacing respective data flows with proven capabilities within SAP Datasphere as well as (sap-managed) data products and Intelligent Applications, instead of spending time and budget on a migration.
 
 ## Architectural Overview
 
 ![drawio](drawio/bw-bdc-detailed.drawio)
 
-SAP BW PCE is the Data Producer. This system is added in the SAP BDC Formation. With this addition, a dedicated provisioning space is created for BW PCE. Data Product Generator is a tool which is available in SAP BW PCE to create data products in Object Store in SAP BDC out of BW PCE. These data products gets generated as custom data products in the object store which is in the SAP BDC Tenant. From the provisioning space in SAP Datasphere, this can be shared with another space for modeling and consumption into SAP Analytics Cloud.
+SAP BW PCE is the Data Producer. This system is added in the SAP BDC Formation. With this addition, a dedicated provisioning space is created for BW PCE. Data Product Generator is a tool which is available in SAP BW PCE to create data products in Object Store in SAP BDC out of BW PCE. These data products gets generated as custom data products in a SAP Datasphere object store as part of SAP BDC. From the provisioning space in SAP Datasphere, this customer data products can be shared with other Datasphere spaces, (SAP) Databricks or via BDC Partner Connect with other certified non-SAP solutions. 
 
 ## Key Services and Components
 
 The modernization process leverages the following components to transition BW environments to SAP BDC:
 
-- **SAP BW PCE**: Private cloud edition of BW for transitioning to BDC.
+- **SAP BW 7.5 on HANA PCE/SAP BW/4HANA**: Private cloud edition of BW for transitioning to BDC.
 - **Data Product Generator:** Enables creation of SAP BW data products for integration into SAP Datasphere.
 - **SAP Datasphere**: Centralized data management platform supporting self-service, semantic onboarding, and integration with data marketplaces.
 - **SAP Analytics Cloud:** Provides advanced analytics and visualization capabilities.
@@ -78,15 +78,15 @@ SAP provides a structured three-step approach for migrating SAP BW systems to th
 
 **The key benefits of SAP BW in the private cloud as part of SAP BDC are:**
 
--   SAP BW data products can be leveraged in SAP Databricks for ML/AI use cases and in SAP Datasphere for analytics scenarios, allowing the native implementation of BW use cases while following a zero copy approach.
+-   SAP BW data products can be leveraged in (SAP) Databricks for ML/AI use cases and in SAP Datasphere for analytic scenarios, allowing the native implementation of BW use cases while following a zero copy approach.
 -   The HANA Data Lake Files (object store) will be the large system option, reducing associated storage costs.
-    Additionally, customers will benefit from data products and delta share mechanism, allowing a direct consumption in SAP Databricks for AI/ML use cases.
+    Additionally, customers will benefit from sap-managed or customer-specific data products and delta share mechanism, allowing a direct consumption in (SAP) Databricks for AI/ML use cases.
 -   The Spark Engine enables custom coding options to replace existing ABAP code.
     In addition, Spark offers scalable compute capabilities supporting high-volume transformations. Spark compute is isolated from the analytics compute, avoiding mutual performance impact.
 
 ### Three-Step Migration Process
 
-**1. Lift to SAP Business Warehouse Cloud, private edition**: Transition existing SAP BW NetWeaver or SAP BW/4HANA on-premises deployments into the private cloud component of SAP BDC. This step secures BW investments while exposing BW data as data products for consumption.
+**1. Lift to SAP Business Warehouse 7.5 on HANA or BW/4HANA, Private Cloud Edition**: Transition existing SAP BW or SAP BW/4HANA on-premises deployments into the private cloud component of SAP BDC. This step secures BW investments while exposing BW data as data products for consumption.
 
 **Migration Pathways: Structured Transition Options**
 
@@ -102,7 +102,7 @@ flowchart LR
   A3[SAP BW/4HANA]:::focusSize
 
   %% Shared final node
-  K[SAP BW private cloud edition in SAP Business Data Cloud]:::focusSize
+  K[SAP BW Private Cloud Edition in SAP Business Data Cloud]:::focusSize
 
   %% --- 1. SAP BW NetWeaver < 7.5* ---
   subgraph S1 [ ]
@@ -163,7 +163,7 @@ flowchart LR
 ```
 
 :::note
-Greenfield implementations go directly to SAP BW, private cloud edition in SAP Business Data Cloud
+Greenfield implementations go directly to SAP BW, Private Cloud Edition in SAP Business Data Cloud
 
 \*  Optional: convert to SAP BW/4HANA directly
     :::
@@ -174,43 +174,43 @@ Greenfield implementations go directly to SAP BW, private cloud edition in SAP B
 
 **For Existing SAP BW/4HANA Environments** - **SAP BW/4HANA 1.0 or 2.0**: Upgrade to SAP BW/4HANA 2023 for latest features. - **SAP BW/4HANA 2021**: Apply the latest Service Pack or upgrade to SAP BW/4HANA 2023. - **SAP BW/4HANA 2023**: Implement the most recent Service Pack for optimal performance.
 
-**2. Shift to SAP BW Data Product:** 
+**2. Shift to BW Data Products:** 
 
-The data product generator for SAP Business Data Cloud allows users to automate the publication of valuable BW data from SAP BW and SAP BW/4HANA systems to the object store of SAP Datasphere within the scope of SAP Business Data Cloud. These data can be leveraged as data product and incorporated in SAP Datasphere projects or shared to third-party-tools.
+The data product generator for SAP Business Data Cloud allows users to automate the publication of valuable BW data from SAP BW and SAP BW/4HANA systems to the object store of SAP Datasphere within the scope of SAP Business Data Cloud. These data can be leveraged as data product and incorporated in SAP Datasphere projects or shared to certified non-SAP solutions via Deltashare.
 
 Note: the object store is not a cold store alternative, but enables SAP BW data product consumption and exposure.
 
 ![drawio](drawio/bw-approach-2.drawio)
 
-**SAP BW Data Product**
+**BW Data Products**
 
--   **Base Data Product:** contains the flattened transactional data of the selected InfoProvider including master data which can be e.g. directly leveraged by SAP Databricks for ML/AI use cases via Delta Share.
+-   **Base Data Product:** contains the flattened transactional data of the selected InfoProvider including master data which can be e.g. directly leveraged by (SAP) Databricks for ML/AI use cases via Delta Share.
 -   **Refined Data Product:** consists of local tables that contain the transactional data and pre-defined associated dimensions, i.e. master data out-of-the-box for analytics use cases and can also be exposed via SQL Share.
 -   **Derived Data Product:** uses the refined data product to define analytical measures or it includes the respective defined key figures, filters etc. - ready to use to gain further business insights and can also be consumed via OData.
 
-With Data Product Generator, Data subscription is created in SAP BW Cockpit for Info Provider. Once the subscription is activated, local table is created in specific BW Inbound space in SAP Datasphere. Multiple subscriptions can be created similarly.
+With Data Product Generator, data subscription is created in SAP BW Cockpit for Info Providers. Once the subscription is activated, local tables are created in an customer-managed object store in SAP Datasphere. Multiple subscriptions can be created similarly.
 
-Once the Run Subscription is executed, the data from Info Provider gets loaded into Local Table(file)into the SAP BW inbound space. Objects in this space are read-only, but data management tasks (e.g. deleting data) are possible. With Merge Task in SAP Datasphere, data will be synced from Inbound Table to Target Table. 
+Once the run subscription is executed, the data from Info Provider gets loaded into object-store based local tables into the SAP BW inbound space. Objects in this space are read-only, but data management tasks (e.g. deleting data) are possible. With Merge Task in SAP Datasphere, data will be synced from Inbound Table to Target Table. 
 
-To create a Data Product, data provider profile is created in Data Sharing Cockpit in SAP Datasphere. If the data provider profile already exists, generate new activation key. DP should be exposed to Formations. Data Products can be created specifying the correct Artifact space (BW Inbound Space) and other required details. Single/Multiple tables can be added to the Data Product. To make this discoverable to other sources, update the Switch Status to 'List', this will create Delta Share Endpoint and ORD document will be created and shared to UCL. Data Product will be listed in the catalog from where this can be shared to other spaces.
+To create a Data Product, data provider profile is created in Data Sharing Cockpit in SAP Datasphere. If the data provider profile already exists, generate new activation key. DP should be exposed to formations. Data Products can be created specifying the correct artifact space (BW Inbound Space) and other required details. Single/Multiple tables can be added to the Data Product. To make this discoverable to other sources, update the Switch Status to 'List', this will create Delta Share Endpoint and ORD document will be created and shared to UCL. Data Product will be listed in the BDC data catalog from where this can be shared to other spaces.
 
-With this, SAP BW Data product will be available for modelling and transformation purposes in SAP BDC. With delta share with SAP Databricks, proven SAP BW Data can be used for implementing AI/ML use cases. Update of data can be scheduled in a delta mode.
+With this, BW Data product will be available for modelling and transformation purposes in SAP BDC. With delta share with SAP Databricks, proven SAP BW Data can be used for implementing AI/ML use cases. Update of data can be scheduled in a delta mode.
 
 [For Additional Details : Integrating Data from the Data Product Generator for SAP Business Data Cloud](https://help.sap.com/docs/SAP_DATASPHERE/be5967d099974c69b77f4549425ca4c0/cca4744c85b14788babe7cb6b77c9973.html)
 
 **3. Innovate with SAP Managed Data Products and Intelligent Applications:** 
 
-With the Data Products in SAP BDC, holistic integration between data platforms and business applications is possible. This helps to develop Intelligent applications for insights and business decisions.
+With the Data Products in SAP BDC, holistic integration between data platforms and business applications is possible. This helps to develop (AI) applications for insights and business decisions.
 
 ![drawio](drawio/bw-approach-3.drawio)
 
-Along with SAP BW Data Products and all other LoB Data Product, one of the approaches for building AI/ML applications can be achieved using SAP Databricks. This is optimized to work with SAP Data Products with zero-copy bi-directional data product sharing.
+Along with BW Data Products and all other LoB Data Product, one of the approaches for building AI/ML applications can be achieved using (SAP) Databricks. This is optimized to work with SAP Data Products with zero-copy bi-directional data product sharing.
 
-From SAP Datasphere's Catalog, the BW Data Product can be shared with SAP Databricks. Once the AI/ML analysis has been performed in SAP Databricks, the output from the table in SAP Databricks needs to be enriched and then can be shared back to the SAP-managed Datasphere's space.
+From SAP Datasphere's Catalog, the BW Data Product can be shared with (SAP) Databricks. Once the AI/ML analysis has been performed in (SAP) Databricks, the output from the table in (SAP) Databricks can be enriched and then can be shared back to the BDC data product catalog.
 
 Refer to [SAP Business Data Cloud SDK](https://pypi.org/project/sap-bdc-connect-sdk/) to be able to create and publish Data Products for downstream consumption within SAP BDC. SDK helps to create/update share, create/update the CSN for a share and publish/unpublish a data product.
 
-For customers who are already using Databricks Data Intelligence Platform, Partner Connector from SAP will address brownfield scenarios.This will enable zero-copy sharing of data products bidirectionally based on Delta Sharing. 
+For customers who are already using Databricks Data Intelligence Platform, SAP BDC Connect will address native Databricks brownfield scenarios. This will enable zero-copy sharing of data products bidirectionally based on Delta Sharing. 
 
 
 **Replacing SAP BW Use Cases with SAP Business Data Cloud**
@@ -225,19 +225,20 @@ Reporting:
 -   Query and Composite Provider to be replaced with an Analytic Model and View using the onboarding in the catalog.
 
 Data Foundation:
--   SAP BW Data is pushed via the Data Product Generator into the object store of SAP Datasphere.
+-   SAP BW data is pushed via the Data Product Generator into the object store of SAP Datasphere.
 -   Re-routing of data provisioning to SAP S/4HANA RISE/PCE and Foundation Service.
--   Replace Standard Data Sources with SAP managed Data Products.
--   Translate transformations from SAP BW into Transformation Flows in SAP Datasphere.
--   Replace and repoint existing Location Tables(files) based on SAP BW Data to Local Tables with data from SAP S/4HANA.
--   Access custom data sources via replication flows in SAP Datasphere and push the data into Local Tables(File).
--   Access Non-SAP Data sources via replication flows in SAP Datasphere and push the data into Local Tables(File).
+-   Replace Standard BW Data Sources with SAP managed Data Products.
+-   Translate ABAP or HANA-based transformations from SAP BW into Transformation Flows in SAP Datasphere.
+-   Replace and repoint existing local tables based on SAP BW Data to local tables loaded with data directly from SAP S/4HANA.
+-   Access custom data sources via replication flows in SAP Datasphere and push the data into object-store based, disk-based or memory based local datasphere tables. 
+-   Access Non-SAP Data sources via replication flows in SAP Datasphere and push the data into object-store based, disk-based or memory based local datasphere tables. 
 
 
 ## Key Benefits of SAP BW Modernization
 
 -   **Scalable Architecture**: Transition to a cloud-native platform that adapts to evolving workloads.
 -   **Unified Data Management**: Harmonize data across SAP and non-SAP systems for consistent analytics.
+-   **Central Governance**: One central data catalog for all SAP and selected non-SAP enterprise data 
 -   **Enhanced Analytics**: Enable real-time insights and advanced AI/ML capabilities.
 -   **Reduced Maintenance**: Minimize administrative overhead with streamlined processes.
 -   **Future-Ready**: Position your data infrastructure for ongoing innovation and scalability.
@@ -247,15 +248,15 @@ Data Foundation:
 The modernization process unlocks new possibilities for leveraging SAP BW data:
 
 -   **Building Intelligent Applications**: Develop data-driven applications integrating SAP BW and SAP BDC data products.
--   **AI/ML Scenarios**: Use SAP Databricks to apply advanced AI/ML models to BW data.
+-   **AI/ML Scenarios**: Use (SAP) Databricks to apply advanced AI/ML models to BW data.
 -   **Unified Data Platform**: Consolidate data from SAP and non-SAP sources for comprehensive analytics and insights.
 
 ## Expected TCO Benefits with SAP BDC and SAP BW PCE
 
--   **Transformation Effort:** No migration cost for upgrade to SAP BW/4HANA. Leverage SAP Standard data products with business semantics intact.
+-   **Transformation Effort:** No migration required from SAP BW 7.5 on HANA to BW(4HANA. Thus no migration cost for upgrade to SAP BW/4HANA. Leverage SAP Standard data products with business semantics intact.
 -   **Analytics and Tech Support Cost:** With adoption of Intelligent Applications and Data product, 50-80% reduction in cost as annual cost to build and maintain integrations. Reduction in annual monitoring, technical upgrade effort and reduce losses from unforeseen data risk,
 -   **SAP Software & Maintenance:** No SAP BW/4HANA licence and annual maintenance. Eliminate SAP Datapshere Premium Outbound costs by leveraging zero copy approach.
--   **Infrastructure and Stack Cost:** Optimize hardware investment and reduce hardware size by offloading SAP BW Data volume to object store.
+-   **Infrastructure and Stack Cost:** Optimize hardware investment and reduce SAP HANA hardware size by offloading SAP BW Data volume to object store.
 
 ## SAP Learning Journey
 
